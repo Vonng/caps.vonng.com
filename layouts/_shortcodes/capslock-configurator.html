@@ -1,0 +1,151 @@
+{{- $lang := .Get "lang" | default "en" -}}
+{{- $config := index hugo.Data "capslock-v3" -}}
+{{- $style := resources.Get "css/capslock-configurator.css" | minify | fingerprint -}}
+{{- $script := resources.Get "js/capslock-configurator.js" | minify | fingerprint -}}
+<link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}" crossorigin="anonymous">
+
+<section class="caps-configurator" data-capslock-configurator data-lang="{{ $lang }}">
+  <div class="cc-console">
+    <header class="cc-toolbar">
+      <div class="cc-intro">
+        <span class="cc-kicker">
+          <span class="cc-live-dot" aria-hidden="true"></span>
+          {{ if eq $lang "zh" }}配置驱动 · V3.1{{ else }}CONFIG DRIVEN · V3.1{{ end }}
+        </span>
+        <p>
+          {{ if eq $lang "zh" }}
+            Caps Lock 与右侧 Hyper 修饰键保持按下；从右侧表格选择左侧修饰键组合，再点击按键查看或编辑当前 Karabiner 映射。
+          {{ else }}
+            Caps Lock and the right-side Hyper modifiers stay held. Choose a left-side modifier combination from the table, then inspect or edit any Karabiner mapping.
+          {{ end }}
+        </p>
+      </div>
+      <div class="cc-actions" aria-label="{{ if eq $lang "zh" }}配置操作{{ else }}Configuration actions{{ end }}">
+        <button type="button" class="cc-button cc-button-quiet" data-copy-config>
+          {{ if eq $lang "zh" }}复制 JSON{{ else }}Copy JSON{{ end }}
+        </button>
+        <button type="button" class="cc-button cc-button-quiet" data-reset-config>
+          {{ if eq $lang "zh" }}重置{{ else }}Reset{{ end }}
+        </button>
+        <button type="button" class="cc-button cc-button-primary" data-export-config>
+          {{ if eq $lang "zh" }}下载配置{{ else }}Download config{{ end }}
+        </button>
+      </div>
+    </header>
+
+    <div class="cc-workspace">
+      <div class="cc-stage">
+        <div class="cc-stage-head">
+          <div>
+            <span class="cc-eyebrow">{{ if eq $lang "zh" }}当前控制平面{{ else }}ACTIVE CONTROL PLANE{{ end }}</span>
+            <strong data-plane-title>Hyper</strong>
+          </div>
+          <div class="cc-stage-stats">
+            <span><b data-mapping-count>0</b> {{ if eq $lang "zh" }}个映射{{ else }}mappings{{ end }}</span>
+            <span><b data-edit-count>0</b> {{ if eq $lang "zh" }}处修改{{ else }}edits{{ end }}</span>
+          </div>
+        </div>
+
+        <div class="cc-keyboard-scroll">
+          <div class="cc-keyboard" data-keyboard role="group" aria-label="{{ if eq $lang "zh" }}可交互键盘{{ else }}Interactive keyboard{{ end }}"></div>
+        </div>
+
+        <div class="cc-legend" aria-label="{{ if eq $lang "zh" }}功能分类{{ else }}Mapping categories{{ end }}">
+          <span data-category="basic">{{ if eq $lang "zh" }}基础{{ else }}Basic{{ end }}</span>
+          <span data-category="navigation">{{ if eq $lang "zh" }}导航{{ else }}Navigation{{ end }}</span>
+          <span data-category="deletion">{{ if eq $lang "zh" }}删除{{ else }}Deletion{{ end }}</span>
+          <span data-category="mousekey">{{ if eq $lang "zh" }}鼠标{{ else }}MouseKey{{ end }}</span>
+          <span data-category="window">{{ if eq $lang "zh" }}窗口{{ else }}Window{{ end }}</span>
+          <span data-category="application">{{ if eq $lang "zh" }}应用{{ else }}Application{{ end }}</span>
+          <span data-category="terminal">{{ if eq $lang "zh" }}终端{{ else }}Terminal{{ end }}</span>
+          <span data-category="clipboard">{{ if eq $lang "zh" }}剪贴板{{ else }}Clipboard{{ end }}</span>
+          <span data-category="shifter">{{ if eq $lang "zh" }}上档{{ else }}Shifter{{ end }}</span>
+          <span data-category="functional">{{ if eq $lang "zh" }}功能{{ else }}Functional{{ end }}</span>
+        </div>
+      </div>
+
+      <aside class="cc-control-panel">
+        <section class="cc-panel-section">
+          <div class="cc-section-heading">
+            <div>
+              <span class="cc-eyebrow">{{ if eq $lang "zh" }}控制平面{{ else }}CONTROL PLANE{{ end }}</span>
+              <h2>{{ if eq $lang "zh" }}左侧修饰键组合{{ else }}Left modifier combination{{ end }}</h2>
+            </div>
+            <span class="cc-plane-number" data-plane-number>0</span>
+          </div>
+
+          <div class="cc-hyper-state">
+            <div>
+              <span class="cc-held-symbol">⇪</span>
+              <span><b>Caps Lock</b><small>{{ if eq $lang "zh" }}Hyper 来源{{ else }}Hyper source{{ end }}</small></span>
+              <em>{{ if eq $lang "zh" }}按下{{ else }}HELD{{ end }}</em>
+            </div>
+            <div>
+              <span class="cc-held-symbol">R</span>
+              <span><b>⌘ ⌥ ⌃ ⇧</b><small>{{ if eq $lang "zh" }}右侧修饰键 · Hyper{{ else }}Right modifiers · Hyper{{ end }}</small></span>
+              <em>{{ if eq $lang "zh" }}按下{{ else }}HELD{{ end }}</em>
+            </div>
+          </div>
+
+          <div class="cc-plane-table" aria-label="{{ if eq $lang "zh" }}全部十六个控制平面{{ else }}All sixteen control planes{{ end }}">
+            <div class="cc-plane-table-head" aria-hidden="true">
+              <span>#</span>
+              <span>{{ if eq $lang "zh" }}左⌘{{ else }}L⌘{{ end }}</span>
+              <span>{{ if eq $lang "zh" }}左⌥{{ else }}L⌥{{ end }}</span>
+              <span>{{ if eq $lang "zh" }}左⌃{{ else }}L⌃{{ end }}</span>
+              <span>{{ if eq $lang "zh" }}左⇧{{ else }}L⇧{{ end }}</span>
+              <span>{{ if eq $lang "zh" }}映射{{ else }}MAPS{{ end }}</span>
+            </div>
+            <div data-plane-table></div>
+          </div>
+          <p class="cc-plane-help">{{ if eq $lang "zh" }}点击任意一行快速切换；实心圆表示该左侧修饰键处于按下状态。{{ else }}Click any row to switch; a filled dot means that left modifier is held.{{ end }}</p>
+        </section>
+
+        <section class="cc-panel-section cc-detail" aria-live="polite">
+          <span class="cc-eyebrow">{{ if eq $lang "zh" }}选中映射{{ else }}SELECTED MAPPING{{ end }}</span>
+          <div class="cc-selected-key">
+            <span data-detail-symbol>⇪</span>
+            <div>
+              <strong data-detail-key>caps_lock</strong>
+              <small data-detail-rule>CapsLock to Hyper</small>
+            </div>
+          </div>
+          <div class="cc-action-line">
+            <span>{{ if eq $lang "zh" }}功能{{ else }}Action{{ end }}</span>
+            <strong data-detail-action>Escape / Hyper</strong>
+          </div>
+          <div class="cc-action-line">
+            <span>{{ if eq $lang "zh" }}分类{{ else }}Category{{ end }}</span>
+            <strong data-detail-category>Basic</strong>
+          </div>
+          <p class="cc-raw-action" data-detail-output></p>
+
+          <form class="cc-app-editor" data-app-editor hidden>
+            <label for="cc-app-name-{{ $lang }}">
+              {{ if eq $lang "zh" }}启动应用名称{{ else }}Application name{{ end }}
+            </label>
+            <div class="cc-edit-row">
+              <input id="cc-app-name-{{ $lang }}" name="app-name" type="text" maxlength="128" autocomplete="off" data-app-name>
+              <button type="submit" class="cc-button cc-button-primary">
+                {{ if eq $lang "zh" }}保存{{ else }}Save{{ end }}
+              </button>
+            </div>
+            <small>{{ if eq $lang "zh" }}应用名将安全写入 open -a 命令。{{ else }}The app name is safely written to an open -a command.{{ end }}</small>
+          </form>
+        </section>
+      </aside>
+    </div>
+
+    <footer class="cc-footer-note">
+      <span data-status role="status">
+        {{ if eq $lang "zh" }}所有编辑仅保存在当前页面；请下载 JSON 后导入 Karabiner-Elements。{{ else }}Edits stay in this page until you download the JSON and import it into Karabiner-Elements.{{ end }}
+      </span>
+      <code>capslock-v3.json</code>
+    </footer>
+  </div>
+
+  <script type="application/json" data-capslock-config>{{ safeJS (jsonify $config) }}</script>
+  <noscript>{{ if eq $lang "zh" }}该配置器需要启用 JavaScript。{{ else }}This configurator requires JavaScript.{{ end }}</noscript>
+</section>
+
+<script src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}" crossorigin="anonymous" defer></script>

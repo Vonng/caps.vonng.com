@@ -1,0 +1,7 @@
+{{ define "main" }}
+<div class="td-content caps-configurator-page">
+  {{ partial "page-title.html" . }}
+  {{ with .Params.description }}<div class="lead">{{ . | markdownify }}</div>{{ end }}
+  {{ partial "content/render.html" . }}
+</div>
+{{ end }}

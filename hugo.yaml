@@ -1,0 +1,231 @@
+#=======================================#
+# Basics
+#=======================================#
+baseURL: https://capslock.vonng.com/
+title: Capslock Enhancement
+defaultContentLanguage: en
+defaultContentLanguageInSubdir: false
+enableRobotsTXT: true
+enableGitInfo: false
+hasCJKLanguage: true
+capitalizeListTitles: false
+
+services:
+  googleAnalytics:
+    id: G-48B3KSLBJ0
+
+#=======================================#
+# OINK 0.4.1 theme module
+#=======================================#
+module:
+  proxy: direct
+  hugoVersion:
+    extended: true
+    min: "0.160.1"
+  imports:
+    - path: github.com/pgsty/oink
+  mounts:
+    - source: content
+      target: content
+      sites:
+        matrix:
+          languages: [en, zh]
+
+#=======================================#
+# Languages and navigation
+#=======================================#
+languages:
+  en:
+    label: English
+    locale: en-US
+    weight: 1
+    title: Capslock Enhancement
+    params:
+      description: Turn Caps Lock into Escape, a Hyper modifier, and sixteen ergonomic keyboard control planes.
+      copyright:
+        authors: '[Ruohang Feng](https://vonng.com/en/) · [Apache License 2.0](https://github.com/Vonng/Capslock/blob/main/LICENSE)'
+        from_year: 2017
+      ui:
+        command_palette:
+          commands:
+            - id: download_capslock
+              title: Download Capslock configuration
+              description: Open the current Karabiner-Elements V3 JSON file
+              url: https://raw.githubusercontent.com/Vonng/Capslock/main/mac_v3/capslock.json
+              icon: fa-solid fa-download
+              keywords: [karabiner, import, install, capslock]
+    menu:
+      main:
+        - identifier: guide
+          name: Guide
+          weight: 10
+          pageRef: /
+          params:
+            icon: fa-solid fa-keyboard
+            description: Install Capslock Enhancement and explore every mapping
+        - identifier: customizer
+          name: Configurator
+          weight: 20
+          pageRef: /customizer
+          params:
+            icon: fa-solid fa-sliders
+            description: Inspect all sixteen planes and export a custom JSON file
+        - identifier: karabiner
+          name: Karabiner
+          weight: 30
+          url: https://karabiner-elements.pqrs.org/
+          params:
+            icon: fa-solid fa-arrow-up-right-from-square
+            description: Download Karabiner-Elements from its official site
+  zh:
+    label: 简体中文
+    locale: zh-CN
+    weight: 2
+    title: Capslock 魔改器
+    params:
+      description: 将大写锁定键变为 Escape、Hyper 修饰键与十六层高效键盘控制平面。
+      copyright:
+        authors: '[冯若航](https://vonng.com/) · [Apache License 2.0](https://github.com/Vonng/Capslock/blob/main/LICENSE)'
+        from_year: 2017
+      ui:
+        command_palette:
+          commands:
+            - id: download_capslock
+              title: 下载 Capslock 配置
+              description: 打开当前 Karabiner-Elements V3 JSON 文件
+              url: https://raw.githubusercontent.com/Vonng/Capslock/main/mac_v3/capslock.json
+              icon: fa-solid fa-download
+              keywords: [Karabiner, 导入, 安装, Capslock]
+    menu:
+      main:
+        - identifier: guide
+          name: 使用指南
+          weight: 10
+          pageRef: /
+          params:
+            icon: fa-solid fa-keyboard
+            description: 安装 Capslock Enhancement 并浏览全部按键映射
+        - identifier: customizer
+          name: 配置器
+          weight: 20
+          pageRef: /customizer
+          params:
+            icon: fa-solid fa-sliders
+            description: 查看全部十六个控制平面并导出定制 JSON
+        - identifier: karabiner
+          name: Karabiner
+          weight: 30
+          url: https://karabiner-elements.pqrs.org/
+          params:
+            icon: fa-solid fa-arrow-up-right-from-square
+            description: 从官方网站下载 Karabiner-Elements
+
+#=======================================#
+# Markdown and outputs
+#=======================================#
+markup:
+  goldmark:
+    parser:
+      attribute:
+        block: true
+      autoHeadingID: true
+      autoHeadingIDType: github
+    renderer:
+      unsafe: true
+    extensions:
+      footnote: true
+      linkify: true
+      table: true
+      taskList: true
+      typographer: true
+      passthrough:
+        enable: true
+        delimiters:
+          inline:
+            - ['\(', '\)']
+          block:
+            - ['$$', '$$']
+  highlight:
+    style: tango
+    codeFences: true
+    noClasses: false
+  tableOfContents:
+    startLevel: 2
+    endLevel: 4
+
+outputs:
+  home: [HTML, LLMS]
+  page: [HTML, markdown]
+
+#=======================================#
+# Site parameters
+#=======================================#
+params:
+  description: Turn Caps Lock into Escape, a Hyper modifier, and sixteen ergonomic keyboard control planes.
+  images:
+    - img/featured.jpg
+  logo: img/logo.svg
+  version: 3.1.0
+  page_width: wide
+  archived_version: false
+  url_latest_version: https://capslock.vonng.com/
+  github_repo: https://github.com/Vonng/Capslock
+  github_project_repo: https://github.com/Vonng/Capslock
+  github_branch: main
+
+  offlineSearch: true
+  offlineSearchIndex: content
+  offlineSearchSummaryLength: 90
+  offlineSearchMaxResults: 10
+  prism_syntax_highlighting: false
+
+  ui:
+    shell_types: [docs, customizer]
+    quick_links: [guide, customizer]
+    typography:
+      preset: system
+    breadcrumb_disable: true
+    navbar_logo: true
+    navbar_theme: dark
+    sidebar_icon_policy: groups
+    sidebar_menu_compact: false
+    sidebar_menu_foldable: false
+    sidebar_menu_truncate: 100
+    sidebar_cache_limit: 1000
+    sidebar_search_disable: false
+    sidebar_root_enabled: true
+    sidebar_root_menu: false
+    sidebar_width_min: 220
+    sidebar_width_max: 360
+    sidebar_item_overflow: wrap
+    ul_show: 1
+    showLightDarkModeMenu: true
+    page_context_menu:
+      enable: true
+      assistant_links: true
+    feedback:
+      enable: false
+    readingtime:
+      enable: false
+    image_zoom:
+      enable: true
+
+  comments:
+    enable: true
+    type: giscus
+    giscus:
+      repo: Vonng/Capslock
+      repoId: MDEwOlJlcG9zaXRvcnk3NDUzNjUwMQ==
+      category: Announcements
+      categoryId: DIC_kwDOBHFWNc4CtnC3
+      mapping: pathname
+      strict: 0
+      reactionsEnabled: 1
+      emitMetadata: 0
+      inputPosition: bottom
+      theme: auto
+      loading: lazy
+
+  copyright:
+    authors: '[Ruohang Feng](https://vonng.com/en/) · [Apache License 2.0](https://github.com/Vonng/Capslock/blob/main/LICENSE)'
+    from_year: 2017

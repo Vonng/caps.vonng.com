@@ -1,0 +1,44 @@
+.capslock-guide .td-shell-article {
+  --td-shell-content-max: 84rem;
+}
+
+.capslock-guide .td-content > h1:first-child {
+  letter-spacing: -0.035em;
+}
+
+.capslock-guide .td-content img {
+  border-radius: 0.75rem;
+}
+
+.capslock-guide .td-content table {
+  font-size: 0.9rem;
+}
+
+.capslock-guide .td-content kbd {
+  white-space: nowrap;
+}
+
+.capslock-customizer .td-shell-layout {
+  --td-shell-content-max: 120rem;
+}
+
+.capslock-customizer .td-shell-main {
+  min-width: 0;
+}
+
+.caps-configurator-page {
+  width: 100%;
+  max-width: 120rem;
+  margin: 0 auto;
+}
+
+.caps-configurator-page > .lead {
+  max-width: 54rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 767.98px) {
+  .capslock-guide .td-content table {
+    font-size: 0.82rem;
+  }
+}

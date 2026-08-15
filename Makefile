@@ -1,0 +1,61 @@
+HUGO ?= hugo
+BIND ?= 127.0.0.1
+PORT ?=
+THEME_DIR ?= ../oink
+WORKSPACE := $(CURDIR)/go.work
+
+.DEFAULT_GOAL := dev
+
+.PHONY: b build c check check-local d debug dev s serve workspace
+
+b: build
+c: check
+d: debug
+s: serve
+
+workspace:
+	@test -f "$(THEME_DIR)/go.mod" || { \
+		echo "OINK theme not found: $(THEME_DIR)" >&2; \
+		exit 1; \
+	}
+	@test -f "$(WORKSPACE)" || go work init .
+	@go work use .
+	@go work edit -replace=github.com/pgsty/oink="$(THEME_DIR)"
+
+dev: workspace
+	@HUGO_MODULE_WORKSPACE="$(WORKSPACE)" $(HUGO) server \
+		--cleanDestinationDir \
+		--disableFastRender \
+		--renderToMemory \
+		--printPathWarnings \
+		--bind "$(BIND)" $(if $(strip $(PORT)),--port "$(PORT)")
+
+debug: dev
+
+serve: dev
+
+build:
+	@GOWORK=off $(HUGO) build \
+		--minify \
+		--cleanDestinationDir
+
+check:
+	GOWORK=off go mod verify
+	@GOWORK=off $(HUGO) build \
+		--minify \
+		--cleanDestinationDir \
+		--printPathWarnings \
+		--printI18nWarnings \
+		--panicOnWarning
+	python3 bin/check_markdown.py content public
+	python3 bin/check_internal_links.py public
+
+check-local: workspace
+	@HUGO_MODULE_WORKSPACE="$(WORKSPACE)" $(HUGO) build \
+		--minify \
+		--cleanDestinationDir \
+		--printPathWarnings \
+		--printI18nWarnings \
+		--panicOnWarning
+	python3 bin/check_markdown.py content public
+	python3 bin/check_internal_links.py public
