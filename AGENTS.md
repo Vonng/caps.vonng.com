@@ -42,9 +42,9 @@ Do not alter the source repository as part of a site-only migration.
   only product-specific interactive view. Keep its CSS and JavaScript scoped
   under `.caps-configurator`.
 - Do not copy general layouts or runtimes from OINK into this repository.
-- Local development uses the sibling `../oink` checkout through the generated,
-  ignored `go.work`; published builds use the exact module revision in
-  `go.mod`.
+- Local development uses a command-scoped module replacement for the sibling
+  `../oink` checkout; published builds use the exact module revision in
+  `go.mod` without generating a workspace file.
 
 ## Verification and publishing
 

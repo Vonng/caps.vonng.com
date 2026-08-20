@@ -1,11 +1,11 @@
 # Capslock Enhancement Documentation
 
 [![Website](https://img.shields.io/badge/website-capslock.vonng.com-17385c?style=flat-square)](https://capslock.vonng.com/)
-[![Theme](https://img.shields.io/badge/OINK-v0.4.1-17385c?style=flat-square)](https://github.com/pgsty/oink/releases/tag/v0.4.1)
+[![Theme target](https://img.shields.io/badge/OINK-v0.6.0-17385c?style=flat-square)](https://github.com/pgsty/oink)
 [![License](https://img.shields.io/badge/license-Apache--2.0-17385c?style=flat-square)](LICENSE)
 
 This repository publishes the bilingual Capslock Enhancement guide and its
-interactive Karabiner configurator with Hugo Extended and OINK 0.4.1.
+interactive Karabiner configurator with Hugo Extended and OINK 0.5.1.
 
 The product source, Karabiner JSON, and canonical documentation live in
 [`Vonng/Capslock`](https://github.com/Vonng/Capslock). This site intentionally
@@ -20,13 +20,16 @@ Install Git, Go, and Hugo Extended 0.160.1 or newer. With the OINK checkout at
 make dev
 ```
 
-This creates an ignored `go.work` that points Hugo at the sibling theme. The
-production-compatible build always resolves the exact OINK version in
-`go.mod`:
+This applies a one-command module replacement that points Hugo at the sibling
+theme without creating `go.work`. To validate an intentional local theme change,
+run:
 
 ```sh
-make check
+make check-local
 ```
+
+`make check` and `make serve` deliberately resolve the exact published OINK
+version in `go.mod`.
 
 ## Site-specific extensions
 

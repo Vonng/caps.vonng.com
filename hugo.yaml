@@ -15,7 +15,7 @@ services:
     id: G-48B3KSLBJ0
 
 #=======================================#
-# OINK 0.4.1 theme module
+# OINK 0.5.1 theme module
 #=======================================#
 module:
   proxy: direct
@@ -128,6 +128,7 @@ markup:
     parser:
       attribute:
         block: true
+      wrapStandAloneImageWithinParagraph: false
       autoHeadingID: true
       autoHeadingIDType: github
     renderer:
@@ -173,18 +174,17 @@ params:
   github_project_repo: https://github.com/Vonng/Capslock
   github_branch: main
 
-  offlineSearch: true
-  offlineSearchIndex: content
-  offlineSearchSummaryLength: 90
-  offlineSearchMaxResults: 10
-  prism_syntax_highlighting: false
+  highlight_classes: true
+  offline_search: true
+  offline_search_index: content
+  offline_search_summary_length: 90
+  offline_search_max_results: 10
 
   ui:
     shell_types: [docs, customizer]
     quick_links: [guide, customizer]
-    typography:
-      preset: system
-    breadcrumb_disable: true
+    typography: system
+    breadcrumb: false
     navbar_logo: true
     navbar_theme: dark
     sidebar_icon_policy: groups
@@ -198,17 +198,15 @@ params:
     sidebar_width_min: 220
     sidebar_width_max: 360
     sidebar_item_overflow: wrap
-    ul_show: 1
-    showLightDarkModeMenu: true
+    sidebar_expand_levels: 1
+    dark_mode: true
     page_context_menu:
       enable: true
       assistant_links: true
     feedback:
       enable: false
-    readingtime:
-      enable: false
-    image_zoom:
-      enable: true
+    reading_time: false
+    image_zoom: true
 
   comments:
     enable: true
