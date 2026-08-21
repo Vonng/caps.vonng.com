@@ -2,7 +2,7 @@
 # Basics
 #=======================================#
 baseURL: https://capslock.vonng.com/
-title: Capslock Enhancement
+title: CapsLock
 defaultContentLanguage: en
 defaultContentLanguageInSubdir: false
 enableRobotsTXT: true
@@ -15,7 +15,7 @@ services:
     id: G-48B3KSLBJ0
 
 #=======================================#
-# OINK 0.5.1 theme module
+# OINK 0.6.0 theme module
 #=======================================#
 module:
   proxy: direct
@@ -39,7 +39,7 @@ languages:
     label: English
     locale: en-US
     weight: 1
-    title: Capslock Enhancement
+    title: CapsLock
     params:
       description: Turn Caps Lock into Escape, a Hyper modifier, and sixteen ergonomic keyboard control planes.
       copyright:
@@ -56,23 +56,23 @@ languages:
               keywords: [karabiner, import, install, capslock]
     menu:
       main:
-        - identifier: guide
-          name: Guide
-          weight: 10
-          pageRef: /
+        - identifier: docs
+          name: Docs
+          weight: 20
+          pageRef: /docs
           params:
-            icon: fa-solid fa-keyboard
-            description: Install Capslock Enhancement and explore every mapping
+            icon: fa-solid fa-book-open
+            description: Install CapsLock and learn every control plane
         - identifier: customizer
           name: Configurator
-          weight: 20
+          weight: 30
           pageRef: /customizer
           params:
             icon: fa-solid fa-sliders
             description: Inspect all sixteen planes and export a custom JSON file
         - identifier: karabiner
           name: Karabiner
-          weight: 30
+          weight: 40
           url: https://karabiner-elements.pqrs.org/
           params:
             icon: fa-solid fa-arrow-up-right-from-square
@@ -98,23 +98,23 @@ languages:
               keywords: [Karabiner, 导入, 安装, Capslock]
     menu:
       main:
-        - identifier: guide
-          name: 使用指南
-          weight: 10
-          pageRef: /
+        - identifier: docs
+          name: 文档
+          weight: 20
+          pageRef: /docs
           params:
-            icon: fa-solid fa-keyboard
-            description: 安装 Capslock Enhancement 并浏览全部按键映射
+            icon: fa-solid fa-book-open
+            description: 安装 CapsLock 并掌握所有控制平面
         - identifier: customizer
           name: 配置器
-          weight: 20
+          weight: 30
           pageRef: /customizer
           params:
             icon: fa-solid fa-sliders
             description: 查看全部十六个控制平面并导出定制 JSON
         - identifier: karabiner
           name: Karabiner
-          weight: 30
+          weight: 40
           url: https://karabiner-elements.pqrs.org/
           params:
             icon: fa-solid fa-arrow-up-right-from-square
@@ -134,6 +134,12 @@ markup:
     renderer:
       unsafe: true
     extensions:
+      # Chinese source wraps at a readable column; without this a soft line
+      # break between two CJK characters would render as a stray space.
+      cjk:
+        enable: true
+        eastAsianLineBreaks: true
+        eastAsianLineBreaksStyle: simple
       footnote: true
       linkify: true
       table: true
@@ -182,7 +188,7 @@ params:
 
   ui:
     shell_types: [docs, customizer]
-    quick_links: [guide, customizer]
+    quick_links: [docs, customizer]
     typography: system
     breadcrumb: false
     navbar_logo: true
