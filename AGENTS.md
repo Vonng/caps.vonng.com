@@ -70,8 +70,10 @@ Do not alter the source repository as part of a site-only migration.
   `layouts/index.html` or a home partial; express a new idea as another
   built-in section in `data/home/*.yaml` instead. The single landing style this
   site owns is the hero wordmark rule in `assets/scss/_styles_project.scss`,
-  which justifies both title lines to one measure; keep the two `title_lines`
-  plain strings so the lockup stays one ink colour.
+  scoped to `:lang(zh)`: Chinese sets 让 CapsLock over a tracked-out 再次伟大,
+  so both lines are justified to one measure, while English breaks into three
+  ragged lines and needs no help. Keep every `title_lines` entry a plain string
+  so the lockup stays one ink colour.
 - Landing copy above the family cards must fit on one line at 1440px: hero
   lines, metric labels and descriptions, section descriptions, and every
   capability title, motto, bullet and value. Long points become extra short

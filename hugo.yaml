@@ -49,7 +49,7 @@ languages:
         command_palette:
           commands:
             - id: download_capslock
-              title: Download Capslock configuration
+              title: Download the CapsLock configuration
               description: Open the current Karabiner-Elements V3 JSON file
               url: https://raw.githubusercontent.com/Vonng/Capslock/main/mac_v3/capslock.json
               icon: fa-solid fa-download
@@ -81,7 +81,7 @@ languages:
     label: 简体中文
     locale: zh-CN
     weight: 2
-    title: Capslock 魔改器
+    title: CapsLock 补完计划
     params:
       description: 将大写锁定键变为 Escape、Hyper 修饰键与十六层高效键盘控制平面。
       copyright:
@@ -91,11 +91,11 @@ languages:
         command_palette:
           commands:
             - id: download_capslock
-              title: 下载 Capslock 配置
+              title: 下载 CapsLock 配置
               description: 打开当前 Karabiner-Elements V3 JSON 文件
               url: https://raw.githubusercontent.com/Vonng/Capslock/main/mac_v3/capslock.json
               icon: fa-solid fa-download
-              keywords: [Karabiner, 导入, 安装, Capslock]
+              keywords: [Karabiner, 导入, 安装, CapsLock]
     menu:
       main:
         - identifier: docs

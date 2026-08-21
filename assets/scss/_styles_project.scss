@@ -8,7 +8,7 @@
 //      and a tighter type scale;
 //   2. the configurator, a purpose-built interactive page whose own rules live
 //      in assets/css/capslock-configurator.css;
-//   3. the home hero wordmark, whose two lines are justified to one measure.
+//   3. the Chinese home hero wordmark, whose two lines share one measure.
 
 // ---------------------------------------------------------------------------
 // Manual pages
@@ -74,16 +74,18 @@ html:not([data-bs-theme='dark']) .only-dark {
   color: var(--bs-body-bg);
 }
 
-// The home hero wordmark. Both lines carry the same ink and are justified to
-// the width of the longer one, so the two-line lockup reads as a single block
-// instead of a ragged edge. `max-content` sizes the box to the longer line;
-// `text-align-last` is what justifies a line that is also the last line.
-.td-home .td-landing-hero__title {
+// The Chinese hero wordmark sets 让 CapsLock over 再次伟大. Justifying both
+// lines to the width of the longer one tracks the four characters out to meet
+// the Latin line above, which is how a Chinese display title is normally set.
+// English is left ragged: it breaks into three natural lines instead.
+// `max-content` sizes the box to the longer line; `text-align-last` is what
+// justifies a line that is also the last one.
+html:lang(zh) .td-home .td-landing-hero__title {
   width: max-content;
   max-width: 100%;
 }
 
-.td-home .td-landing-hero__title > span {
+html:lang(zh) .td-home .td-landing-hero__title > span {
   white-space: normal;
   text-align: justify;
   text-align-last: justify;

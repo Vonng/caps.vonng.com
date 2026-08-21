@@ -20,10 +20,9 @@ sections:
 
 hero:
   eyebrow: CapsLock Enhancement · V3.1 · Karabiner-Elements
-  # Two lines, one ink colour, justified to the same measure by
-  # assets/scss/_styles_project.scss so the pair reads as one wordmark.
   title_lines:
-    - Make CapsLock
+    - Make
+    - CapsLock
     - Great Again
   # prettier-ignore
   lead: Tap it for **Escape**. Hold it for **Hyper**.<br>One forgotten key becomes sixteen keyboard control planes.
