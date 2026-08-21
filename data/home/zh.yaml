@@ -1,0 +1,341 @@
+# CapsLock 补完计划 —— 简体中文落地页数据。
+# 由 OINK 0.6.0 原生 landing 注册表渲染，下列区块均为内置类型。
+# 其中的映射数量、控制平面数量来自 data/capslock-v3.json，需与之同步更新。
+
+sections:
+  - hero
+  - metrics
+  - capabilities
+  - type: cards
+    key: families
+  - type: steps
+    key: install
+  - type: testimonials
+    key: voices
+  - type: timeline
+    key: history
+  - faq
+  - cta
+
+hero:
+  eyebrow: CapsLock 补完计划 · V3.1 · Karabiner-Elements
+  title_lines:
+    - 让 CapsLock
+    - 再次伟大
+  # prettier-ignore
+  lead: 单击是 **Escape**，按住是 **Hyper**。<br>一个被遗忘的按键，展开十六个键盘控制平面。
+  note: Apache-2.0 开源 · 不常驻额外后台进程 · 无需付费
+  note_icon: fa-solid fa-shield-halved
+  image:
+    light: img/keyboard-hero.webp
+    dark: img/keyboard-hero-dark.webp
+    alt: CapsLock 零号控制平面的全键盘彩色映射图
+  media:
+    max_width: 680px
+    ratio: minmax(0, 1fr) minmax(360px, 1fr)
+  actions:
+    - label: 五分钟完成安装
+      url: docs/getting-started/
+      icon: fa-solid fa-bolt
+      style: primary
+    - label: 打开配置器
+      url: customizer/
+      icon: fa-solid fa-sliders
+      style: ghost
+  detail:
+    label: 已收录于 Karabiner-Elements 官方复杂修饰陈列馆
+    url: https://ke-complex-modifications.pqrs.org/#caps_lock_enhancement
+    icon: fa-solid fa-box-open
+    external: true
+
+metrics:
+  animate: true
+  columns: 4
+  items:
+    - value: 1
+      label: 只改一个键
+      desc: 只有 Caps Lock 易主，其余按键照旧
+      icon: fa-solid fa-keyboard
+    - value: 16
+      label: 控制平面
+      desc: 左侧四个修饰键像四个二进制位一样寻址
+      icon: fa-solid fa-layer-group
+    - value: 282
+      label: 按键映射
+      desc: 当前 V3 规则集中的全部组合
+      icon: fa-solid fa-diagram-project
+    - value: 13
+      label: 年持续维护
+      desc: 2013 年的一段 AutoHotkey 脚本
+      icon: fa-solid fa-code-branch
+
+capabilities:
+  eyebrow: 为什么一个键就够了
+  title: 那个几乎从不按下的键，可以承担一整套工作流
+  text: 键盘上最顺手的那个键什么都不做。下面是它可以做的事。
+  items:
+    - ref: 01 / 核心思路
+      title: 单击 Escape，按住 Hyper
+      url: docs/getting-started/#hyper
+      motto: 一个键，两份互不冲突的职责
+      bullets:
+        - 轻点一下发送 `Esc`，让最高频的按键回到手指旁边
+        - '按住则发送 **✱ Hyper**：**右侧**四个修饰键同时按下'
+        - Alfred、Moom 与 IDE 收到的都是普通组合键
+        - '`✱ Esc` 仍可切换原始的大写锁定状态'
+        - '`✱ Space` 仍可切换输入法'
+      value: 什么都没有失去，一切都离手更近。
+      visual:
+        type: card
+        icon: fa-solid fa-keyboard
+        title: '`⇪` Caps Lock'
+        lines:
+          - '**单击** → `⎋` Escape'
+          - '**按住** → `✱` Hyper 修饰键'
+          - '`✱` `⎋` → 切换原始大写锁定'
+          - '`✱` `␣` → 切换输入法'
+    - ref: 02 / 可寻址空间
+      title: 十六个控制平面，而不是一层
+      url: docs/getting-started/#control-planes
+      motto: 四个修饰键，四个二进制位，十六个平面
+      bullets:
+        - '**左侧**的 `⌘` `⌥` `⌃` `⇧` 就是四个二进制开关'
+        - 零号平面承载日常高频操作
+        - 九个平面已被使用，还有七个留给你
+        - 你新增的平面与内置平面地位完全相同
+      value: 键盘不再是一个平面，而是一段地址空间。
+      visual:
+        type: code
+        aria_label: 控制平面的寻址方式
+        title: control-planes
+        lines:
+          - { class: c, prefix: '# ', text: '平面 = 左侧 ⌘⌥⌃⇧ 的四位二进制组合' }
+          - { class: ok, prefix: '✱      ', text: '平面  0    89 个映射' }
+          - { class: p, prefix: '✱⌘     ', text: '平面  1    59 个映射' }
+          - { class: p, prefix: '✱⌥     ', text: '平面  2    38 个映射' }
+          - { class: p, prefix: '✱⇧     ', text: '平面  8    25 个映射' }
+          - { class: p, prefix: '✱⌘⇧    ', text: '平面  9    21 个映射' }
+          - { class: p, prefix: '✱⌥⇧    ', text: '平面 10    21 个映射' }
+          - { class: c, prefix: '# ', text: '已用 9 个平面，还剩 7 个' }
+    - ref: 03 / 配置即数据
+      title: 先看清每一处映射，再动手修改
+      url: customizer/
+      motto: 一个 JSON 文件，没有隐藏状态
+      bullets:
+        - 配置器读取的就是本项目发布的那份 JSON
+        - 逐平面、逐按键展示真实的 Karabiner 输出
+        - 改掉黄色按键背后的应用，再导出新配置
+        - '还想更深：改 `capslock.yml`，跑一条 `make`'
+      value: 先看懂，再定制。
+      visual:
+        type: components
+        aria_label: 文档与工具
+        columns: 2
+        items:
+          - {
+              icon: fa-solid fa-bolt,
+              title: 安装与基础,
+              detail: Karabiner 配置,
+              url: docs/getting-started/,
+            }
+          - {
+              icon: fa-solid fa-compass,
+              title: 导航与鼠标,
+              detail: 移动 · 选择 · 指针,
+              url: docs/navigation/,
+            }
+          - {
+              icon: fa-solid fa-terminal,
+              title: 开发者工作流,
+              detail: 窗口 · 应用 · 终端,
+              url: docs/workflows/,
+            }
+          - {
+              icon: fa-solid fa-table-list,
+              title: 系统与参考,
+              detail: 功能键 · 符号 · FAQ,
+              url: docs/reference/,
+            }
+          - {
+              icon: fa-solid fa-sliders,
+              title: 配置器,
+              detail: 查看并导出,
+              url: customizer/,
+            }
+          - {
+              icon: fa-brands fa-github,
+              title: 源码,
+              detail: 'Vonng/Capslock',
+              url: 'https://github.com/Vonng/Capslock',
+              external: true,
+            }
+
+families:
+  eyebrow: 平面里装着什么
+  title: 九类按键，一套心智模型
+  text: 键盘按用途分区着色，一个键的邻居就告诉你它做什么。下面的数量是 V3.1 中各类目实际包含的映射数。
+  columns: 3
+  link_label: 查看映射
+  items:
+    - title: 导航
+      meta: 102 个映射
+      icon: fa-solid fa-compass
+      desc: '`HJKL` 移动，`UIOP` 翻页。叠加修饰键即可选择文本，切换标签页、窗口、应用与桌面，或者驱动指针与滚轮。'
+      url: docs/navigation/#navigation
+    - title: 删除
+      meta: 12 个映射
+      icon: fa-solid fa-delete-left
+      desc: '`N` `M` `,` `.` 就在导航键正下方，向前向后按字符、单词或整行删除，手不必离开核心区。'
+      url: docs/navigation/#deletion
+    - title: 鼠标键
+      meta: 63 个映射
+      icon: fa-solid fa-computer-mouse
+      desc: 小键盘变成一只完整的鼠标：八个指针方向、四个滚轮方向、五个按键，并带有加速与减速变体。
+      url: docs/navigation/#mousekey
+    - title: 窗口管理
+      meta: 19 个映射
+      icon: fa-solid fa-window-restore
+      desc: 关闭标签页、窗口或应用；在应用、窗口、标签页与桌面之间切换；睡眠、锁屏与注销。窗口布局交给 Moom 或 Magnet。
+      url: docs/workflows/#window-control
+    - title: 应用捷径
+      meta: 18 个映射
+      icon: fa-solid fa-rocket
+      desc: 黄色按键用于启动或切换浏览器、终端、编辑器、IDE 与启动器。这些只是默认值，不是约束。
+      url: docs/workflows/#applications
+    - title: 终端与 IDE
+      meta: 10 个映射
+      icon: fa-solid fa-terminal
+      desc: '`⌃C` `⌃D` `⌃Z` `⌃R` 不再需要别扭的左手姿势，还有 Vim 与 Tmux 的前缀键，以及 Codex 和 Claude 各占一个键。'
+      url: docs/workflows/#terminal-control
+    - title: 剪贴板
+      meta: 10 个映射
+      icon: fa-solid fa-clipboard
+      desc: 数字键 `6`–`0` 变成五个互相独立的文本剪贴板。Hyper 加 `⌘` 复制到某一槽位，单独 Hyper 从中粘贴。
+      url: docs/workflows/#clipboard
+    - title: 字符变换
+      meta: 16 个映射
+      icon: fa-solid fa-code
+      desc: 程序员整天都在敲的标点 —— 圆括号、花括号、尖括号、下划线、冒号与感叹号 —— 都只有一个组合键的距离。
+      url: docs/workflows/#shifter
+    - title: 功能键
+      meta: 28 个映射
+      icon: fa-solid fa-sliders
+      desc: F1–F12 上的媒体、亮度、键盘背光与音量，反引号与 F13–F14 上的截图，以及导航键簇上的细粒度调节。
+      url: docs/reference/#functional
+
+install:
+  eyebrow: 安装
+  title: 两步，大约五分钟
+  text: 一组 Karabiner-Elements 规则，没有别的东西需要安装，也不新增后台进程。
+  items:
+    - title: 安装 Karabiner-Elements
+      icon: fa-solid fa-download
+      desc: 从[官方网站](https://karabiner-elements.pqrs.org/)下载，或者使用 Homebrew 安装。按 macOS 提示授予后台服务、辅助功能、输入监控与驱动扩展权限。
+      cmd:
+        code: brew install --cask karabiner-elements
+    - title: 导入规则
+      icon: fa-solid fa-file-import
+      desc: 在任意浏览器中打开下面这个 URL，它会把配置直接交给 Karabiner-Elements。点击 **Import**，再在 **Complex Modifications** 中启用需要的规则。
+      cmd:
+        code: karabiner://karabiner/assets/complex_modifications/import?url=https://raw.githubusercontent.com/Vonng/Capslock/main/mac_v3/capslock.json
+
+voices:
+  eyebrow: 来自真实用户
+  title: 一套让人专程写信道谢的键盘方案
+  text: 这些不是市场文案，而是两封完整的用户来信 —— 来自把补完计划用进日常工作的人。
+  columns: 2
+  items:
+    - comment: |-
+        我只想向这位开发者朋友致以最诚挚的谢意，感谢您在 CapsLock
+        Enhancement 中付出的辛苦努力！
+
+        先前我也用 Karabiner-Elements 改了个 Hyper/Escape 切换键，也像你一样
+        配置了几个应用快捷方式。
+
+        但你简直把这个东西提升到了一个**全新的境界**，太不可思议了！我把你的
+        键位参考图打印下来贴在了显示器上！
+
+        我正在慢慢微调，让它逐渐适配我自己的工作流。感谢你，向我展示了一种
+        赋予键盘多个 Hyper 控制平面的可能性！
+
+        *在这一切的背后，一定会有一个如此优雅而简单的解法：无论是花费十年、
+        一百年还是一千年，当我们最终发现它时，都会面面相觑 —— 除了它，还能
+        是什么呢？* —— 约翰·阿奇博尔德·惠勒，《纽约科学院年鉴》，480（1986）
+      name: Matthew Kelly
+      desc: '“MCGA is Amazing” · 2019 年 2 月 22 日 · 译自英文'
+      icon: fa-solid fa-envelope-open-text
+    - comment: |-
+        作者您好，
+
+        我今天偶然发现了您的 git 库 `github.com/Vonng/Capslock`，下载试用了
+        一下，真是佩服得五体投地。
+
+        这个 script 让我真正爱上了键盘。
+
+        刚好我用的也是 Filco 87 双模键盘，配合这个 script，真是感觉要飞起来
+        了！
+
+        发邮件只是为了表达衷心的感谢，希望您以后还能继续维护下去。
+
+        再次衷心感谢！
+      name: 张强
+      desc: '“非常感谢您的改键大作” · 中文原文'
+      icon: fa-solid fa-envelope-open-text
+
+history:
+  eyebrow: 一个想法，十三年
+  title: 从一段 AutoHotkey 脚本到一套 Karabiner 规则
+  items:
+    - date: 2013
+      title: Windows · AutoHotkey
+      desc: 最初的补完计划在 Windows 上把这个键变成修饰键。现已归档，但仍保留在仓库中。
+    - date: 2015
+      title: macOS V1
+      desc: 移植到初代 Karabiner 及其 XML 私有配置。
+    - date: 2017
+      title: macOS V2
+      desc: 基于 Karabiner-Elements 的复杂修饰重写。十六个控制平面在此成形，项目也进入官方陈列馆。
+    - date: 2021
+      title: macOS V3
+      desc: 配置改为可读的 YAML 源文件，再编译成 Karabiner JSON，映射从此可以当作数据来审阅。
+    - date: 2026
+      title: V3.1
+      desc: '`6`–`0` 上的五个剪贴板，`C` 上的 Codex 与 Claude，F13 与 F14 上的截图，以及 Spotlight 与 Alfred 5 的新默认值。'
+      url: docs/reference/#versions
+
+faq:
+  eyebrow: 安装之前
+  title: 值得先问清楚的问题
+  items:
+    - question: 会失去大写锁定功能吗？
+      answer: >-
+        不会。Hyper 加 `⎋` 就能切换原始的大写锁定状态，macOS 的指示灯照常工作。实际使用中，大写锁定一个月用不了几次，而 Escape 一分钟要用好几次 —— 这正是交换二者的理由。
+      open: true
+    - question: 其他快捷键工具还能正常工作吗？
+      answer: >-
+        可以。Hyper 不是私有信号，它就是键盘**右侧**的 `⌘` `⌥` `⌃` `⇧` 同时按下。Alfred、Moom、Magnet、Raycast 以及各类 IDE 收到的是一个完全普通的组合键，可以像绑定其他快捷键一样绑定它。
+    - question: 必须接受默认的应用快捷键吗？
+      answer: >-
+        不必。[配置器](/zh/customizer/)可以在浏览器里改写黄色按键背后的应用，并导出新的 JSON 文件。需要更深的定制，就 fork 仓库、修改 `mac_v3/capslock.yml`，再重新生成 JSON。
+    - question: 需要特殊键盘吗？
+      answer: >-
+        不需要。布局以 ANSI 键盘为蓝本，内置键盘与外接键盘同样适用。小键盘鼠标层需要一块数字小键盘，其余功能都不需要。
+    - question: Windows 与 Linux 呢？
+      answer: >-
+        Windows 上的 AutoHotkey 版本已归档，不再维护。Linux 暂不支持：各桌面环境差异太大，一份配置难以覆盖。欢迎用 `xmodmap` 之类工具移植。
+    - question: 收费吗？会收集什么数据？
+      answer: >-
+        不收费，也不收集任何数据。这套规则是以 Apache-2.0 授权的数据，由 Karabiner-Elements 解释执行；没有账号，没有遥测，也没有独立的后台进程。
+
+cta:
+  title: 让 Caps Lock 再次伟大。
+  text: 安装 Karabiner，导入一个 JSON 文件，双手从此不必离开核心区。
+  actions:
+    - label: 阅读安装指南
+      url: docs/getting-started/
+      icon: fa-solid fa-bolt
+      style: primary
+    - label: 打开配置器
+      url: customizer/
+      icon: fa-solid fa-sliders
+      style: ghost

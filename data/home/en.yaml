@@ -1,0 +1,409 @@
+# CapsLock Enhancement — English landing data.
+# Rendered by OINK 0.6.0's native landing registry; every section below is a
+# built-in type. Facts (mapping counts, plane counts) come from
+# data/capslock-v3.json and must be updated together with it.
+
+sections:
+  - hero
+  - metrics
+  - capabilities
+  - type: cards
+    key: families
+  - type: steps
+    key: install
+  - type: testimonials
+    key: voices
+  - type: timeline
+    key: history
+  - faq
+  - cta
+
+hero:
+  eyebrow: CapsLock Enhancement · V3.1 · Karabiner-Elements
+  # Two lines, one ink colour, justified to the same measure by
+  # assets/scss/_styles_project.scss so the pair reads as one wordmark.
+  title_lines:
+    - Make CapsLock
+    - Great Again
+  # prettier-ignore
+  lead: Tap it for **Escape**. Hold it for **Hyper**.<br>One forgotten key becomes sixteen keyboard control planes.
+  note: Apache-2.0 · no background service of its own · nothing to buy
+  note_icon: fa-solid fa-shield-halved
+  image:
+    light: img/keyboard-hero.webp
+    dark: img/keyboard-hero-dark.webp
+    alt: Colour-coded map of CapsLock control plane zero across a full keyboard
+  media:
+    max_width: 680px
+    ratio: minmax(0, 1fr) minmax(360px, 1fr)
+  actions:
+    - label: Install in five minutes
+      url: docs/getting-started/
+      icon: fa-solid fa-bolt
+      style: primary
+    - label: Open the configurator
+      url: customizer/
+      icon: fa-solid fa-sliders
+      style: ghost
+  detail:
+    label: Also in the Karabiner-Elements gallery
+    url: https://ke-complex-modifications.pqrs.org/#caps_lock_enhancement
+    icon: fa-solid fa-box-open
+    external: true
+
+metrics:
+  animate: true
+  columns: 4
+  items:
+    - value: 1
+      label: Key repurposed
+      desc: Caps Lock, and nothing else
+      icon: fa-solid fa-keyboard
+    - value: 16
+      label: Control planes
+      desc: Four left modifiers, four bits
+      icon: fa-solid fa-layer-group
+    - value: 282
+      label: Key mappings
+      desc: Every chord in the V3 rule set
+      icon: fa-solid fa-diagram-project
+    - value: 13
+      label: Years maintained
+      desc: An AutoHotkey script in 2013
+      icon: fa-solid fa-code-branch
+
+capabilities:
+  eyebrow: Why one key is enough
+  title: The key you never press, doing the work of many
+  text:
+    The most reachable key on the board does nothing. Here is what it does
+    instead.
+  items:
+    - ref: 01 / THE CORE IDEA
+      title: Tap for Escape, hold for Hyper
+      url: docs/getting-started/#hyper
+      motto: One key, two unambiguous jobs
+      bullets:
+        - A short tap sends `Esc`, back within reach
+        - 'A hold sends **✱ Hyper**: all four *right-side* modifiers'
+        - So Alfred, Moom and your IDE see an ordinary chord
+        - '`✱ Esc` still toggles the original Caps Lock'
+        - '`✱ Space` still switches the input source'
+      value: Nothing is lost. Everything moves closer.
+      visual:
+        type: card
+        icon: fa-solid fa-keyboard
+        title: '`⇪` Caps Lock'
+        lines:
+          - '**Tap** → `⎋` Escape'
+          - '**Hold** → `✱` Hyper modifier'
+          - '`✱` `⎋` → the original Caps Lock toggle'
+          - '`✱` `␣` → switch input source'
+    - ref: 02 / ADDRESSABLE SPACE
+      title: Sixteen planes, not one layer
+      url: docs/getting-started/#control-planes
+      motto: Four modifiers, four bits, sixteen planes
+      bullets:
+        - The *left-side* `⌘` `⌥` `⌃` `⇧` are four binary switches
+        - Plane zero carries the daily essentials
+        - Nine planes are in use; seven stay free for you
+        - A plane you add behaves exactly like one that ships
+      value: The keyboard stops being a surface and becomes an address space.
+      visual:
+        type: code
+        aria_label: How control planes are addressed
+        title: control-planes
+        lines:
+          - { class: c, prefix: '# ', text: 'plane = left ⌘⌥⌃⇧ read as four bits' }
+          - { class: ok, prefix: '✱      ', text: 'plane  0   89 mappings' }
+          - { class: p, prefix: '✱⌘     ', text: 'plane  1   59 mappings' }
+          - { class: p, prefix: '✱⌥     ', text: 'plane  2   38 mappings' }
+          - { class: p, prefix: '✱⇧     ', text: 'plane  8   25 mappings' }
+          - { class: p, prefix: '✱⌘⇧    ', text: 'plane  9   21 mappings' }
+          - { class: p, prefix: '✱⌥⇧    ', text: 'plane 10   21 mappings' }
+          - { class: c, prefix: '# ', text: '9 planes in use, 7 still yours' }
+    - ref: 03 / CONFIGURATION AS DATA
+      title: Read it all. Then change it.
+      url: customizer/
+      motto: One JSON file, no hidden state
+      bullets:
+        - The configurator reads the JSON this project ships
+        - Every plane, every key, its real Karabiner output
+        - Rename the apps behind the yellow keys, then export
+        - 'Deeper still: edit `capslock.yml`, run one `make`'
+      value: Inspect first. Customize with confidence.
+      visual:
+        type: components
+        aria_label: Documentation and tools
+        columns: 2
+        items:
+          - {
+              icon: fa-solid fa-bolt,
+              title: Install & Hyper,
+              detail: karabiner setup,
+              url: docs/getting-started/,
+            }
+          - {
+              icon: fa-solid fa-compass,
+              title: Navigation,
+              detail: move · select · mouse,
+              url: docs/navigation/,
+            }
+          - {
+              icon: fa-solid fa-terminal,
+              title: Workflows,
+              detail: windows · apps · shell,
+              url: docs/workflows/,
+            }
+          - {
+              icon: fa-solid fa-table-list,
+              title: Reference,
+              detail: keys · symbols · FAQ,
+              url: docs/reference/,
+            }
+          - {
+              icon: fa-solid fa-sliders,
+              title: Configurator,
+              detail: inspect and export,
+              url: customizer/,
+            }
+          - {
+              icon: fa-brands fa-github,
+              title: Source,
+              detail: 'Vonng/Capslock',
+              url: 'https://github.com/Vonng/Capslock',
+              external: true,
+            }
+
+families:
+  eyebrow: What the planes hold
+  title: Nine families of keys, one mental model
+  text:
+    The physical keyboard is colour-coded by purpose, so a key's neighbourhood
+    tells you what it does. Counts below are the mappings each family ships in
+    V3.1.
+  columns: 3
+  link_label: Read the mappings
+  items:
+    - title: Navigation
+      meta: 102 mappings
+      icon: fa-solid fa-compass
+      desc:
+        '`HJKL` moves, `UIOP` pages. Add modifiers to select text, switch
+        tabs, windows, apps and desktops, or drive the pointer and wheel.'
+      url: docs/navigation/#navigation
+    - title: Deletion
+      meta: 12 mappings
+      icon: fa-solid fa-delete-left
+      desc:
+        '`N` `M` `,` `.` sit under the navigation keys and delete by
+        character, word or line — forwards and backwards, without moving your
+        hand.'
+      url: docs/navigation/#deletion
+    - title: MouseKey
+      meta: 63 mappings
+      icon: fa-solid fa-computer-mouse
+      desc:
+        The numeric keypad becomes a complete mouse — eight pointer
+        directions, four wheel directions and five buttons, with slow and fast
+        variants.
+      url: docs/navigation/#mousekey
+    - title: Window control
+      meta: 19 mappings
+      icon: fa-solid fa-window-restore
+      desc:
+        Close a tab, a window or an app; cycle apps, windows, tabs and
+        desktops; sleep, lock or log out. Layout is handed to Moom or Magnet.
+      url: docs/workflows/#window-control
+    - title: Applications
+      meta: 18 mappings
+      icon: fa-solid fa-rocket
+      desc:
+        The yellow keys launch or focus the browser, terminal, editor, IDE and
+        launcher. These are defaults, not requirements.
+      url: docs/workflows/#applications
+    - title: Terminal & IDE
+      meta: 10 mappings
+      icon: fa-solid fa-terminal
+      desc:
+        '`⌃C` `⌃D` `⌃Z` `⌃R` without contorting your left hand, plus Vim and
+        Tmux prefixes and one key each for Codex and Claude.'
+      url: docs/workflows/#terminal-control
+    - title: Clipboards
+      meta: 10 mappings
+      icon: fa-solid fa-clipboard
+      desc:
+        Number keys `6`–`0` become five independent text clipboards. Hyper
+        with `⌘` copies into a slot; Hyper alone pastes from it.
+      url: docs/workflows/#clipboard
+    - title: Shifter
+      meta: 16 mappings
+      icon: fa-solid fa-code
+      desc:
+        The punctuation a programmer types all day — brackets, braces, angle
+        brackets, underscore, colon and bang — one chord away.
+      url: docs/workflows/#shifter
+    - title: Functional
+      meta: 28 mappings
+      icon: fa-solid fa-sliders
+      desc:
+        Media, brightness, keyboard light and volume on F1–F12, screenshots on
+        the backtick and F13–F14, plus fine-grained steps on the navigation
+        cluster.
+      url: docs/reference/#functional
+
+install:
+  eyebrow: Installation
+  title: Two steps, about five minutes
+  text:
+    A Karabiner-Elements rule set. Nothing else to install, nothing new in the
+    background.
+  items:
+    - title: Install Karabiner-Elements
+      icon: fa-solid fa-download
+      desc:
+        Download it from the
+        [official site](https://karabiner-elements.pqrs.org/), or use Homebrew.
+        Grant the background services, Accessibility, Input Monitoring and
+        Driver Extension permissions macOS asks for.
+      cmd:
+        code: brew install --cask karabiner-elements
+    - title: Import the rules
+      icon: fa-solid fa-file-import
+      desc:
+        Open this URL in any browser — it hands the configuration straight to
+        Karabiner-Elements. Choose **Import**, then enable the rules you want
+        under **Complex Modifications**.
+      cmd:
+        code: karabiner://karabiner/assets/complex_modifications/import?url=https://raw.githubusercontent.com/Vonng/Capslock/main/mac_v3/capslock.json
+
+voices:
+  eyebrow: From real users
+  title: The keyboard setup people write emails about
+  text:
+    Not marketing copy — two emails, in full, from people who put CapsLock
+    Enhancement into their daily work.
+  columns: 2
+  items:
+    - comment: |-
+        I just wanted to reach out to a fellow dev and say thank you so much
+        for all the hard work you put into your Capslock enhancements.
+
+        I was already using a hyper/escape key via karabiner elements and used
+        it to hot-swap focus between apps as you have on a few of your keys.
+
+        But **HOT DAMN** you took it to a whole new level. This is amazing. I
+        have printed out your reference image and have it hanging on my
+        monitor.
+
+        I am slowly tweaking and customizing to make it fit my workflow. Thank
+        you again and again for showing me a new way to think about my
+        keyboard with multiple HYPER LAYERS!
+
+        *Behind it all is surely an idea so simple, so beautiful, that when we
+        grasp it — in a decade, a century, or a millennium — we will all say to
+        each other, how could it have been otherwise?*
+        — John Archibald Wheeler, Annals of the New York Academy of Sciences,
+        480 (1986)
+      name: Matthew Kelly
+      desc: '“MCGA is Amazing” · 22 February 2019'
+      icon: fa-solid fa-envelope-open-text
+    - comment: |-
+        Hello author:
+
+        I stumbled upon your git library today, downloaded it and tried it
+        out: `github.com/Vonng/Capslock` — and I am really impressed. This
+        script made me really love my keyboard.
+
+        I'm using a Filco 87 dual-mode keyboard just like you, and this script
+        makes me feel like flying!
+
+        I'm just sending you an email to express my sincere thanks and hope
+        you will continue to maintain it in the future.
+
+        Thanks again!
+      name: Qiang Zhang
+      desc: '“非常感谢您的改键大作” · translated from Chinese'
+      icon: fa-solid fa-envelope-open-text
+
+history:
+  eyebrow: Thirteen years of one idea
+  title: From an AutoHotkey script to a Karabiner rule set
+  items:
+    - date: 2013
+      title: Windows, AutoHotkey
+      desc:
+        The first CapsLock Enhancement turns the key into a modifier on
+        Windows. Archived, but still in the repository.
+    - date: 2015
+      title: macOS V1
+      desc: Ported to the original Karabiner and its XML private configuration.
+    - date: 2017
+      title: macOS V2
+      desc:
+        Rebuilt on Karabiner-Elements complex modifications. The sixteen
+        control planes appear, and the project enters the official gallery.
+    - date: 2021
+      title: macOS V3
+      desc:
+        The configuration becomes a readable YAML source compiled into
+        Karabiner JSON, so mappings can be reviewed as data.
+    - date: 2026
+      title: V3.1
+      desc:
+        Five clipboards on `6`–`0`, Codex and Claude on `C`, screenshots on
+        F13 and F14, Spotlight and Alfred 5 defaults.
+      url: docs/reference/#versions
+
+faq:
+  eyebrow: Before you install
+  title: Questions worth asking first
+  items:
+    - question: Do I lose Caps Lock itself?
+      answer: >-
+        No. Hyper plus `⎋` toggles the original Caps Lock state, and macOS
+        still shows the indicator. In practice the state is needed a few times
+        a month, while Escape is needed a few times a minute — which is the
+        whole argument for the swap.
+      open: true
+    - question: Will my other shortcut apps still work?
+      answer: >-
+        Yes. Hyper is not a private signal: it is `⌘` `⌥` `⌃` `⇧` on the
+        **right** side of the keyboard, held together. Alfred, Moom, Magnet,
+        Raycast and your IDE receive a perfectly ordinary chord and can bind
+        it like any other.
+    - question: Do I have to accept the default application keys?
+      answer: >-
+        No. The [configurator](/customizer/) rewrites the applications behind
+        the yellow keys in the browser and exports a new JSON file. For
+        anything deeper, edit `mac_v3/capslock.yml` in a fork and regenerate
+        the JSON.
+    - question: Does it need a special keyboard?
+      answer: >-
+        No. The layout assumes an ANSI keyboard and works on built-in Apple
+        keyboards and external ones alike. The numeric-keypad mouse layer
+        needs a keypad; everything else does not.
+    - question: What about Windows and Linux?
+      answer: >-
+        The Windows AutoHotkey version is archived in the repository and no
+        longer maintained. Linux is not supported: desktop environments differ
+        too much for one configuration. A port with tools such as `xmodmap`
+        would be welcome.
+    - question: What does it cost, and what does it collect?
+      answer: >-
+        Nothing, and nothing. The rule set is Apache-2.0 licensed data
+        interpreted by Karabiner-Elements; there is no account, no telemetry
+        and no separate background process.
+
+cta:
+  title: Make Caps Lock great again.
+  text: Install Karabiner, import one JSON file, keep your hands on the home row.
+  actions:
+    - label: Read the install guide
+      url: docs/getting-started/
+      icon: fa-solid fa-bolt
+      style: primary
+    - label: Open the configurator
+      url: customizer/
+      icon: fa-solid fa-sliders
+      style: ghost
