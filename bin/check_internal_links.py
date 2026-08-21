@@ -19,12 +19,37 @@ import urllib.parse
 
 SITE_URL = "https://capslock.vonng.com"
 SITE_HOSTS = {"capslock.vonng.com", "www.capslock.vonng.com"}
-REQUIRED_ROUTES = {"/", "/zh/", "/customizer/", "/zh/customizer/"}
+REQUIRED_ROUTES = {
+    "/",
+    "/zh/",
+    "/docs/",
+    "/zh/docs/",
+    "/docs/getting-started/",
+    "/zh/docs/getting-started/",
+    "/docs/navigation/",
+    "/zh/docs/navigation/",
+    "/docs/workflows/",
+    "/zh/docs/workflows/",
+    "/docs/reference/",
+    "/zh/docs/reference/",
+    "/customizer/",
+    "/zh/customizer/",
+}
 FORBIDDEN_MARKERS = {"PG Exporter", "exp.pgsty.com", "pg_exporter"}
 REQUIRED_LANGUAGES = {
     "/": "en-US",
+    "/docs/": "en-US",
+    "/docs/getting-started/": "en-US",
+    "/docs/navigation/": "en-US",
+    "/docs/workflows/": "en-US",
+    "/docs/reference/": "en-US",
     "/customizer/": "en-US",
     "/zh/": "zh-CN",
+    "/zh/docs/": "zh-CN",
+    "/zh/docs/getting-started/": "zh-CN",
+    "/zh/docs/navigation/": "zh-CN",
+    "/zh/docs/workflows/": "zh-CN",
+    "/zh/docs/reference/": "zh-CN",
     "/zh/customizer/": "zh-CN",
 }
 REQUIRED_CONFIGURATOR_SELECTORS = (
