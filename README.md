@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/badge/license-Apache--2.0-17385c?style=flat-square)](LICENSE)
 
 This repository publishes the bilingual Capslock Enhancement guide and its
-interactive Karabiner configurator with Hugo Extended and OINK 0.5.1.
+interactive Karabiner configurator with Hugo Extended and OINK 0.6.0.
 
 The product source, Karabiner JSON, and canonical documentation live in
 [`Vonng/Capslock`](https://github.com/Vonng/Capslock). This site intentionally
@@ -33,14 +33,20 @@ version in `go.mod`.
 
 ## Site-specific extensions
 
-- `layouts/index.html` renders the existing long-form guide at the language
-  root instead of OINK's data-driven landing page.
+- `data/home/en.yaml` and `data/home/zh.yaml` compose the product landing page
+  at `/` and `/zh/` entirely from OINK's built-in landing sections. There is no
+  local home layout.
+- `content/docs/` contains the paired multi-page manual: overview,
+  installation, navigation, developer workflows, and system/reference pages.
+  Shortcuts use the theme's `kbd` component throughout.
 - `layouts/customizer.html` gives the configurator a full-width OINK shell.
 - `layouts/_shortcodes/capslock-configurator.html` reads the checked-in
   Karabiner JSON and loads the scoped configurator assets.
+- `assets/scss/_styles_project.scss` holds only manual and configurator
+  tweaks; every landing style comes from the theme.
 
 All general navigation, search, responsive shell, dark mode, table of contents,
-language switching, page actions, and comments come from OINK.
+language switching, page actions, analytics, and comments come from OINK.
 
 ## License
 
