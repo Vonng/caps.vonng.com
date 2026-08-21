@@ -218,10 +218,11 @@ params:
     enable: true
     type: giscus
     giscus:
-      repo: Vonng/Capslock
-      repoId: MDEwOlJlcG9zaXRvcnk3NDUzNjUwMQ==
+      # Threads live in this site's own repository, not the source project's.
+      repo: Vonng/caps.vonng.com
+      repoId: R_kgDOT_hWiQ
       category: Announcements
-      categoryId: DIC_kwDOBHFWNc4CtnC3
+      categoryId: DIC_kwDOT_hWic4DD4Cs
       mapping: pathname
       strict: 0
       reactionsEnabled: 1
