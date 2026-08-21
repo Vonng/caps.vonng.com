@@ -1,22 +1,97 @@
-.capslock-guide .td-shell-article {
-  --td-shell-content-max: 84rem;
+// Site-owned styles.
+//
+// OINK owns the shell, the docs layouts, and every landing section on the home
+// page; nothing here re-implements them. What is left is the three places this
+// site deliberately differs from a stock OINK site:
+//
+//   1. the reference manual, whose wide mapping tables need a little more room
+//      and a tighter type scale;
+//   2. the configurator, a purpose-built interactive page whose own rules live
+//      in assets/css/capslock-configurator.css;
+//   3. the home hero wordmark, whose two lines are justified to one measure.
+
+// ---------------------------------------------------------------------------
+// Manual pages
+// ---------------------------------------------------------------------------
+
+.capslock-docs .td-shell-article {
+  --td-shell-content-max: 88rem;
+  min-width: 0;
 }
 
-.capslock-guide .td-content > h1:first-child {
-  letter-spacing: -0.035em;
+.capslock-docs .td-shell-main {
+  min-width: 0;
 }
 
-.capslock-guide .td-content img {
-  border-radius: 0.75rem;
-}
-
-.capslock-guide .td-content table {
+// The mapping tables carry six modifier columns; a slightly smaller face keeps
+// them inside the reading column instead of pushing them into their scroller.
+.capslock-docs .td-content table {
   font-size: 0.9rem;
 }
 
-.capslock-guide .td-content kbd {
+// A chord such as ✱ + ⌘ + H must never break across two lines.
+.capslock-docs .td-content kbd,
+.capslock-docs .td-content .td-kbd-sequence {
   white-space: nowrap;
 }
+
+// Keyboard maps are wide, flat-colour diagrams: let them use the full column.
+.capslock-docs .td-content img {
+  border-radius: 0.9rem;
+}
+
+// A pair of images of the same subject, one drawn for each colour scheme.
+// The theme passes `class` through untouched for exactly this purpose.
+//
+// Both selectors are anchored on `html`, because OINK also puts
+// `data-bs-theme="dark"` on individual elements (landing code plates, for
+// one). An unanchored `:not([data-bs-theme='dark'])` matches <body> in every
+// theme and would hide the dark image even in dark mode.
+html[data-bs-theme='dark'] .only-light,
+html:not([data-bs-theme='dark']) .only-dark {
+  display: none;
+}
+
+// The Karabiner import link. Hugo's Markdown link renderer refuses a
+// `karabiner://` href, so the manual writes a raw anchor; this gives it the
+// weight the step deserves.
+.capslock-docs .td-content a.td-import-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.6rem 1.15rem;
+  border: 1px solid var(--bs-link-color);
+  border-radius: 0.55rem;
+  background: color-mix(in srgb, var(--bs-link-color) 8%, transparent);
+  color: var(--bs-link-color);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.capslock-docs .td-content a.td-import-link:hover,
+.capslock-docs .td-content a.td-import-link:focus-visible {
+  background: var(--bs-link-color);
+  color: var(--bs-body-bg);
+}
+
+// The home hero wordmark. Both lines carry the same ink and are justified to
+// the width of the longer one, so the two-line lockup reads as a single block
+// instead of a ragged edge. `max-content` sizes the box to the longer line;
+// `text-align-last` is what justifies a line that is also the last line.
+.td-home .td-landing-hero__title {
+  width: max-content;
+  max-width: 100%;
+}
+
+.td-home .td-landing-hero__title > span {
+  white-space: normal;
+  text-align: justify;
+  text-align-last: justify;
+}
+
+// ---------------------------------------------------------------------------
+// Configurator
+// ---------------------------------------------------------------------------
 
 .capslock-customizer .td-shell-layout {
   --td-shell-content-max: 120rem;
@@ -32,13 +107,32 @@
   margin: 0 auto;
 }
 
+.caps-configurator-page > .td-page-heading {
+  text-align: center;
+}
+
+.caps-configurator-page > .td-page-heading h1 {
+  margin-bottom: 0.65rem;
+  letter-spacing: -0.04em;
+}
+
 .caps-configurator-page > .lead {
   max-width: 54rem;
-  margin-bottom: 1.5rem;
+  margin: 0 auto 2.2rem;
+  text-align: center;
 }
 
 @media (max-width: 767.98px) {
-  .capslock-guide .td-content table {
+  .capslock-docs .td-content table {
     font-size: 0.82rem;
+  }
+
+  .caps-configurator-page > .td-page-heading,
+  .caps-configurator-page > .lead {
+    text-align: left;
+  }
+
+  .caps-configurator-page > .lead {
+    margin-bottom: 1.5rem;
   }
 }
