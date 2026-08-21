@@ -114,6 +114,9 @@ Do not alter the source repository as part of a site-only migration.
   part of link QA.
 - Do not treat a local Hugo build as a hosted deployment.
 - Verify the remote repository before any push or deployment.
+- `.github/workflows/ci.yaml` only builds and verifies. Publishing happens on
+  Cloudflare Pages, outside this repository; do not add a GitHub Pages deploy
+  step back.
 
 ## Analytics and comments
 

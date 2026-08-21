@@ -48,6 +48,13 @@ version in `go.mod`.
 All general navigation, search, responsive shell, dark mode, table of contents,
 language switching, page actions, analytics, and comments come from OINK.
 
+## Publishing
+
+`.github/workflows/ci.yaml` runs `make check` on every push and pull request:
+a warning-strict build plus the source, link, route and configurator-data
+gates. It does not deploy. The site is published from Cloudflare Pages, which
+builds `make build` into `public/`.
+
 ## License
 
 Capslock Enhancement, this documentation, and the site-specific configuration
