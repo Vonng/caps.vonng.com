@@ -15,7 +15,7 @@ services:
     id: G-48B3KSLBJ0
 
 #=======================================#
-# OINK 0.6.0 theme module
+# OINK 1.0.0 theme module
 #=======================================#
 module:
   proxy: direct

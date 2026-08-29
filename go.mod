@@ -1,5 +1,5 @@
 module github.com/Vonng/caps.vonng.com
 
-go 1.21
+go 1.27.0
 
-require github.com/pgsty/oink v0.7.0
+require github.com/pgsty/oink v1.0.0
