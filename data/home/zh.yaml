@@ -32,7 +32,7 @@ hero:
     alt: CapsLock 零号控制平面的全键盘彩色映射图
   media:
     max_width: 680px
-    ratio: minmax(0, 1fr) minmax(360px, 1fr)
+    ratio: 1fr 1fr
   actions:
     - label: 五分钟完成安装
       url: docs/getting-started/

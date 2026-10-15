@@ -34,7 +34,7 @@ hero:
     alt: Colour-coded map of CapsLock control plane zero across a full keyboard
   media:
     max_width: 680px
-    ratio: minmax(0, 1fr) minmax(360px, 1fr)
+    ratio: 1fr 1fr
   actions:
     - label: Install in five minutes
       url: docs/getting-started/

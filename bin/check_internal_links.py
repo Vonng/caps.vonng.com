@@ -69,9 +69,12 @@ class DocumentParser(html.parser.HTMLParser):
         self.links: list[str] = []
         self.redirect_target: str | None = None
         self.html_lang: str | None = None
+        self.controls: list[str] = []
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         attributes = {key.lower(): value for key, value in attrs if value is not None}
+        if attributes.get("aria-controls"):
+            self.controls.extend(attributes["aria-controls"].split())
         if tag == "html":
             self.html_lang = attributes.get("lang")
         if tag == "meta" and attributes.get("http-equiv", "").lower() == "refresh":
@@ -185,7 +188,7 @@ def main() -> int:
             if marker in source:
                 failures[f"placeholder marker {marker!r}"].append(source_route)
 
-    config_path = public.parent / "data" / "capslock-v3.json"
+    config_path = pathlib.Path(__file__).resolve().parents[1] / "data" / "capslock-v3.json"
     if not config_path.is_file():
         failures["missing configurator data data/capslock-v3.json"].append("site contract")
     else:
@@ -201,6 +204,9 @@ def main() -> int:
     checked = 0
     for source_path, document in documents.items():
         source_route = route_for_file(public, source_path)
+        for identifier in document.controls:
+            if identifier not in document.ids:
+                failures[f"missing control target {identifier}"].append(source_route)
         for raw_url in document.links:
             target = resolve_internal_url(source_route, raw_url)
             if target is None:
