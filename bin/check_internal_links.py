@@ -17,8 +17,8 @@ import sys
 import urllib.parse
 
 
-SITE_URL = "https://capslock.vonng.com"
-SITE_HOSTS = {"capslock.vonng.com", "www.capslock.vonng.com"}
+SITE_URL = "https://caps.vonng.com"
+SITE_HOSTS = {"caps.vonng.com", "www.caps.vonng.com"}
 REQUIRED_ROUTES = {
     "/",
     "/zh/",

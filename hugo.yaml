@@ -1,7 +1,7 @@
 #=======================================#
 # Basics
 #=======================================#
-baseURL: https://capslock.vonng.com/
+baseURL: https://caps.vonng.com/
 title: CapsLock
 defaultContentLanguage: en
 defaultContentLanguageInSubdir: false
@@ -175,7 +175,7 @@ params:
   version: 3.1.0
   page_width: wide
   archived_version: false
-  url_latest_version: https://capslock.vonng.com/
+  url_latest_version: https://caps.vonng.com/
   github_repo: https://github.com/Vonng/Capslock
   github_project_repo: https://github.com/Vonng/Capslock
   github_branch: main
