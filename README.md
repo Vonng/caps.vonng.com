@@ -1,11 +1,11 @@
 # Capslock Enhancement Documentation
 
 [![Website](https://img.shields.io/badge/website-caps.vonng.com-17385c?style=flat-square)](https://caps.vonng.com/)
-[![Theme target](https://img.shields.io/badge/OINK-v1.3.0-17385c?style=flat-square)](https://github.com/pgsty/oink)
+[![Theme target](https://img.shields.io/badge/OINK-v1.3.2-17385c?style=flat-square)](https://github.com/pgsty/oink)
 [![License](https://img.shields.io/badge/license-Apache--2.0-17385c?style=flat-square)](LICENSE)
 
 This repository publishes the bilingual Capslock Enhancement guide and its
-interactive Karabiner configurator with Hugo Extended and OINK 1.3.0.
+interactive Karabiner configurator with Hugo Extended and OINK 1.3.2.
 
 The product source, Karabiner JSON, and canonical documentation live in
 [`Vonng/Capslock`](https://github.com/Vonng/Capslock). This site intentionally
@@ -13,7 +13,7 @@ keeps only the content and assets needed to build `caps.vonng.com`.
 
 ## Local development
 
-Install Git, Go, and Hugo Extended 0.166.0 or newer. With the OINK checkout at
+Install Git, Go, and Hugo Extended 0.168.0 or newer. With the OINK checkout at
 `../oink`, run:
 
 ```sh
@@ -51,7 +51,7 @@ language switching, page actions, analytics, and comments come from OINK.
 ## Publishing
 
 `.github/workflows/ci.yaml` runs `make check` on every push and pull request:
-a warning-strict build plus the source, link, route and configurator-data
+a production build plus the source, link, route and configurator-data
 gates. It does not deploy. The site is published from Cloudflare Pages, which
 builds `make build` into `public/`.
 
