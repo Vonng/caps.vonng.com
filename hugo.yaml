@@ -15,7 +15,7 @@ services:
     id: G-48B3KSLBJ0
 
 #=======================================#
-# OINK 1.3.2 theme module
+# OINK 1.5.0 theme module
 #=======================================#
 module:
   proxy: direct
@@ -187,6 +187,7 @@ params:
   offline_search_max_results: 10
 
   ui:
+    compare: true
     preset: paper
     preset_menu: [paper, slate, ink, terminal]
     shell_types: [docs, customizer]

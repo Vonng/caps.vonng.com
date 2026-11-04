@@ -51,7 +51,7 @@ CapsLock Enhancement 让 {{< kbd "⇪" >}} 同时承担两种职责：单击发�
 | [剪贴板](/zh/docs/workflows/#clipboard) | 紫色 | {{< kbd "6" >}}–{{< kbd "0" >}} 上的五个额外文本剪贴板 | 10 |
 | [字符变换](/zh/docs/workflows/#shifter) | 橙色 | 把括号与代码标点挪到核心区附近 | 16 |
 | [功能键](/zh/docs/reference/#functional) | 青色 | 截图、媒体、亮度、键盘背光与音量 | 28 |
-{caption="capslock.json 中的十条规则，以及各自承载的映射数量"}
+{caption="capslock.json 中的十条规则，以及各自承载的映射数量" .wide .expand}
 
 ## 选择阅读路径 {#pick-a-path}
 

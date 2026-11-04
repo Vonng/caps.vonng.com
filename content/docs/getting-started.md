@@ -120,7 +120,7 @@ switches. Read them as four bits and you get planes 0–15:
 | 13 | {{< kbd "✱" "⌘" "⌃" "⇧" >}} | — | Free |
 | 14 | {{< kbd "✱" "⌥" "⌃" "⇧" >}} | — | Free |
 | 15 | {{< kbd "✱" "⌘" "⌥" "⌃" "⇧" >}} | — | Free |
-{caption="Every plane in V3.1, how many mappings it carries, and the theme it follows"}
+{caption="Every plane in V3.1, how many mappings it carries, and the theme it follows" .wide .expand}
 
 Nine planes are populated; seven are free space for rules of your own. Open the
 [configurator](/customizer/) to browse the same sixteen rows interactively and

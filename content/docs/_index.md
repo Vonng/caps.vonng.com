@@ -55,7 +55,7 @@ one by one.
 | [Clipboard](/docs/workflows/#clipboard) | Purple | Five extra text clipboards on {{< kbd "6" >}}–{{< kbd "0" >}} | 10 |
 | [Shifter](/docs/workflows/#shifter) | Orange | Brackets, braces and code punctuation within reach of the home row | 16 |
 | [Functional](/docs/reference/#functional) | Cyan | Screenshots, media, brightness, keyboard light and volume | 28 |
-{caption="The ten rules in capslock.json, and how many mappings each one carries"}
+{caption="The ten rules in capslock.json, and how many mappings each one carries" .wide .expand}
 
 ## Pick a path {#pick-a-path}
 

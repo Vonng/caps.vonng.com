@@ -27,7 +27,7 @@ the screenshot keys.
 | {{< kbd "F13" >}} | Full screenshot to clipboard | Full screenshot to file |
 | {{< kbd "F14" >}} | Screenshot menu | Legacy Touch Bar screenshot |
 | {{< kbd "F15" >}} | Play / pause | — |
-{caption="Karabiner-Elements 15.1 and later follow System Settings → Keyboard → Keyboard Shortcuts… → Function Keys"}
+{caption="Karabiner-Elements 15.1 and later follow System Settings → Keyboard → Keyboard Shortcuts… → Function Keys" .wide .expand}
 
 The screenshot keys follow one convention: the plain Hyper chord puts the
 capture on the **clipboard**, and adding {{< kbd "⌘" >}} writes it to a
@@ -73,7 +73,7 @@ the media key — macOS's own quarter-step modifier.
 | {{< kbd "⇞" >}} {{< kbd "⇟" >}} | Page Up / Page Down | {{< kbd "⌫" >}} {{< kbd "⌦" >}} | Delete / Forward Delete |
 | ⏫ ⏬ | Faster / slower | 🖲️ | Mouse wheel |
 | 🖱️L / 🖱️R / 🖱️M | Buttons 1 / 2 / 3 | 🖱️B / 🖱️F | Buttons 4 / 5, back and forward |
-{caption="The notation used across this manual and in the keyboard maps"}
+{caption="The notation used across this manual and in the keyboard maps" .wide .expand}
 
 The {{< kbd "✱" >}} symbol is a heavy asterisk. The ordinary asterisk has ASCII
 code 42 — the answer to life, the universe, and everything.

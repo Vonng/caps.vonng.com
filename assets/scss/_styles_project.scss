@@ -35,6 +35,11 @@
   white-space: nowrap;
 }
 
+// Keep the chord's absolutely positioned assistive text inside its table scroller.
+.capslock-docs .td-table-scroll .td-kbd-sequence {
+  position: relative;
+}
+
 // Keyboard maps are wide, flat-colour diagrams: let them use the full column.
 .capslock-docs .td-content img {
   border-radius: 0.9rem;

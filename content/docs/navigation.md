@@ -68,7 +68,7 @@ server.
 | {{< kbd "✱" "⌃" "I" >}} | {{< kbd "⌘" "H" >}} | Hide the current app |
 | {{< kbd "✱" "⌃" "U" >}} | {{< kbd "⌃" "⌘" "F" >}} | Toggle full screen |
 | {{< kbd "✱" "⌃" "P" >}} | {{< kbd "⌘" "␣" >}} | Spotlight |
-{caption="What the ⇧ and ⌃ columns actually send"}
+{caption="What the ⇧ and ⌃ columns actually send" .wide .expand}
 
 > [!NOTE]
 > Tab switching relies on {{< kbd "⌃" "⇥" >}}, which most browsers and editors
@@ -91,7 +91,7 @@ moving at all. {{< kbd "⇧" >}} is the accelerator in both modes.
 | {{< kbd "I" >}} | Right button | Right button | Wheel up | Wheel up |
 | {{< kbd "O" >}} | Back button | Back button | Wheel down | Wheel down |
 | {{< kbd "P" >}} | Forward button | Forward button | Wheel left | Wheel left |
-{caption="Planes 2, 10, 12 and 9 — the two fast planes double the speed of the plane beside them"}
+{caption="Planes 2, 10, 12 and 9 — the two fast planes double the speed of the plane beside them" .wide .expand}
 
 | Plane | Pointer speed | Wheel speed |
 | :-- | :--: | :--: |

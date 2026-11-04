@@ -26,7 +26,7 @@ and cycle things, from a single tab up to the whole login session.
 | {{< kbd "W" >}} | Close window | Close window | Display sleep | — | Sleep |
 | {{< kbd "A" >}} | *Window manager* | Mission Control | Show desktop | Spotlight | — |
 | {{< kbd "S" >}} | Next tab | Previous tab | Next window | Previous window | — |
-{caption="Closing and cycling, from a tab to the whole session"}
+{caption="Closing and cycling, from a tab to the whole session" .wide .expand}
 
 Two rows deserve a note.
 
