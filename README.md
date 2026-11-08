@@ -1,11 +1,11 @@
 # Capslock Enhancement Documentation
 
 [![Website](https://img.shields.io/badge/website-caps.vonng.com-17385c?style=flat-square)](https://caps.vonng.com/)
-[![Theme target](https://img.shields.io/badge/OINK-v1.5.0-17385c?style=flat-square)](https://github.com/pgsty/oink)
+[![Theme target](https://img.shields.io/badge/OINK-v1.5.1-17385c?style=flat-square)](https://github.com/pgsty/oink)
 [![License](https://img.shields.io/badge/license-Apache--2.0-17385c?style=flat-square)](LICENSE)
 
 This repository publishes the bilingual Capslock Enhancement guide and its
-interactive Karabiner configurator with Hugo Extended and OINK 1.5.0.
+interactive Karabiner configurator with Hugo Extended and OINK 1.5.1.
 
 The product source, Karabiner JSON, and canonical documentation live in
 [`Vonng/Capslock`](https://github.com/Vonng/Capslock). This site intentionally

@@ -1,5 +1,5 @@
 # CapsLock 补完计划 —— 简体中文落地页数据。
-# 由 OINK 1.5.0 原生 landing 注册表渲染，下列区块均为内置类型。
+# 由 OINK 1.5.1 原生 landing 注册表渲染，下列区块均为内置类型。
 # 其中的映射数量、控制平面数量来自 data/capslock-v3.json，需与之同步更新。
 
 sections:
